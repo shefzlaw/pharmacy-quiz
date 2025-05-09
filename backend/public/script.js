@@ -15405,12 +15405,11 @@ async function registerUser(e) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-    const response = await fetch('http://localhost:5001/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
-      signal: controller.signal,
-    });
+    const response = await fetch('/api/register', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username, password })
+})
 
     clearTimeout(timeoutId);
     console.log("Registration response status:", response.status);
@@ -15464,7 +15463,7 @@ async function loginUser(e) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-    const response = await fetch('/api/register', {
+    const response = await fetch('/api/login', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ username, password })
